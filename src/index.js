@@ -5,6 +5,7 @@ import 'codemirror/addon/lint/lint.css';
 import 'codemirror/mode/yaml/yaml';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/properties/properties';
+import 'codemirror/mode/shell/shell';
 import 'codemirror/addon/edit/closebrackets';
 import 'codemirror/addon/edit/matchbrackets';
 import 'codemirror/addon/fold/foldcode';
@@ -62,7 +63,9 @@ class ManifestEditor extends Component {
         json: true
       },
       yaml: 'yaml',
-      ini: 'properties'
+      ini: 'properties',
+      shell: 'shell',
+      sh: 'shell'
     };
 
     return Object.assign({}, options, {
@@ -96,7 +99,7 @@ ManifestEditor.defaultProps = {
 };
 
 ManifestEditor.propTypes = {
-  mode: PropTypes.oneOf(['json', 'yaml', 'ini']),
+  mode: PropTypes.oneOf(['json', 'yaml', 'ini', 'sh', 'shell']),
   value: PropTypes.string,
   onChange: PropTypes.func,
   onFocusChange: PropTypes.func,
