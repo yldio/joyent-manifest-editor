@@ -12,7 +12,7 @@
   "files": ["dist"],
   "scripts": {
     "lint": "eslint . --fix",
-    "test": "echo 0 `# bup && NODE_ENV=test jest --coverage`",
+    "test": "eslint . --fix",
     "fmt": "prettier --write --single-quote src/*.js",
     "build": "bup",
     "prepublish": "bup"
