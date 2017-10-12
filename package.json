@@ -9,14 +9,23 @@
   "jsnext:main": "dist/joyent-manifest-editor.es.js",
   "module": "dist/joyent-manifest-editor.es.js",
   "entry": "src/index.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "lint": "eslint . --fix",
-    "test": "eslint . --fix",
+    "test": "run-s lint size",
     "fmt": "prettier --write --single-quote src/*.js",
     "build": "bup",
-    "prepublish": "bup"
+    "prepublish": "bup",
+    "size": "bundlesize"
   },
+  "bundlesize": [
+    {
+      "path": "./src/index.js",
+      "maxSize": "960B"
+    }
+  ],
   "dependencies": {
     "prettier": "^1.7.4",
     "prop-types": "^15.6.0",
@@ -25,6 +34,7 @@
   "devDependencies": {
     "babel-eslint": "^8.0.1",
     "babel-preset-react-app": "^3.0.3",
+    "bundlesize": "^0.15.2",
     "bup": "^2.0.5",
     "eslint": "^4.8.0",
     "eslint-config-joyent-portal": "3.1.0",
@@ -37,6 +47,7 @@
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.4.0",
     "jest": "^21.2.1",
+    "npm-run-all": "^4.1.1",
     "prettier": "^1.7.4",
     "react": "^16.0.0",
     "react-test-renderer": "^16.0.0"
