@@ -17,11 +17,11 @@ import 'codemirror/addon/hint/show-hint';
 import 'codemirror/addon/selection/active-line';
 import 'codemirror/addon/edit/closetag';
 
-import React, { Component } from 'react';
-import ReactCodeMirror from 'react-codemirror';
+import React from 'react';
+import { UnControlled as ReactCodeMirror } from 'react-codemirror2';
 import PropTypes from 'prop-types';
 
-const options = {
+const defaultOptions = {
   theme: 'eclipse',
   indentUnit: 2,
   smartIndent: true,
@@ -45,56 +45,36 @@ const options = {
   ]
 };
 
-class ManifestEditor extends Component {
-  constructor() {
-    super();
+const mergeOptions = ({ mode, readOnly }) => {
+  const modes = {
+    json: {
+      name: 'javascript',
+      json: true
+    },
+    yaml: 'yaml',
+    ini: 'properties',
+    shell: 'shell',
+    sh: 'shell'
+  };
 
-    this._refs = {};
-  }
-  ref(name) {
-    return ref => {
-      this._refs[name] = ref;
-    };
-  }
-  options({ mode, readOnly }) {
-    const modes = {
-      json: {
-        name: 'javascript',
-        json: true
-      },
-      yaml: 'yaml',
-      ini: 'properties',
-      shell: 'shell',
-      sh: 'shell'
-    };
+  return Object.assign({}, defaultOptions, {
+    mode: modes[mode.toLowerCase()],
+    readOnly
+  });
+};
 
-    return Object.assign({}, options, {
-      mode: modes[mode.toLowerCase()],
-      readOnly
-    });
-  }
-  render() {
-    return (
-      <ReactCodeMirror
-        ref={this.ref('cm')}
-        value={this.props.value || this.props.defaultValue}
-        onChange={this.props.onChange}
-        onFocusChange={this.props.onFocusChange}
-        options={this.options(this.props)}
-        autoSave={this.props.autoSave}
-        preserveScrollPosition={this.props.preserveScrollPosition}
-      />
-    );
-  }
-}
+const ManifestEditor = ({ value, defaultValue, onChange, ...rest }) => (
+  <ReactCodeMirror
+    value={value || defaultValue}
+    onChange={onChange}
+    options={mergeOptions(rest)}
+  />
+);
 
 ManifestEditor.defaultProps = {
   mode: 'json',
   defaultValue: '',
   onChange: () => null,
-  onFocusChange: () => null,
-  autoSave: true,
-  preserveScrollPosition: true,
   readOnly: false
 };
 
@@ -102,9 +82,6 @@ ManifestEditor.propTypes = {
   mode: PropTypes.oneOf(['json', 'yaml', 'ini', 'sh', 'shell']),
   value: PropTypes.string,
   onChange: PropTypes.func,
-  onFocusChange: PropTypes.func,
-  autoSave: PropTypes.bool,
-  preserveScrollPosition: PropTypes.bool,
   readOnly: PropTypes.bool
 };
 
