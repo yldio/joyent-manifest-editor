@@ -34,10 +34,9 @@ const defaultOptions = {
   autoCloseBrackets: true,
   styleActiveLine: true,
   matchBrackets: true,
-  lineWrapping: true,
+  lineWrapping: false,
   foldGutter: true,
   autoCloseTags: true,
-  viewportMargin: Infinity,
   gutters: [
     'CodeMirror-lint-markers',
     'CodeMirror-foldgutter',

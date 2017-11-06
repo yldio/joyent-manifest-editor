@@ -1,6 +1,6 @@
 {
   "name": "joyent-manifest-editor",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "license": "MPL-2.0",
   "repository": "github:yldio/joyent-manifest-editor",
   "main": "dist/joyent-manifest-editor.umd.js",
