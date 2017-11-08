@@ -1,9 +1,7 @@
 {
   "name": "joyent-manifest-editor",
-  "version": "1.4.0",
+  "version": "3.0.1",
   "license": "MPL-2.0",
-  "description": "",
-  "keywords": [],
   "repository": "github:yldio/joyent-manifest-editor",
   "main": "dist/joyent-manifest-editor.umd.js",
   "jsnext:main": "dist/joyent-manifest-editor.es.js",
@@ -29,20 +27,20 @@
   "dependencies": {
     "prettier": "^1.7.4",
     "prop-types": "^15.6.0",
-    "react-codemirror": "^1.0.0"
+    "react-codemirror2": "^3.0.3"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
     "babel-preset-react-app": "^3.0.3",
-    "bundlesize": "^0.15.2",
-    "bup": "^2.0.5",
-    "eslint": "^4.8.0",
+    "bundlesize": "^0.15.3",
+    "bup": "^2.0.6",
+    "eslint": "^4.9.0",
     "eslint-config-joyent-portal": "3.1.0",
     "eslint-config-prettier": "^2.6.0",
     "eslint-config-react-app": "^2.0.1",
     "eslint-config-xo-space": "^0.17.0",
     "eslint-plugin-flowtype": "^2.39.1",
-    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.4.0",
