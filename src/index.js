@@ -29,7 +29,6 @@ const defaultOptions = {
   indentWithTabs: false,
   electricChars: true,
   lineNumbers: true,
-  inputStyle: 'contenteditable',
   lint: true,
   autoCloseBrackets: true,
   styleActiveLine: true,
